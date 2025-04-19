@@ -72,6 +72,7 @@
 
 <script setup>
 import { ref, watch, defineProps, defineEmits } from "vue";
+// props and emits
 const props = defineProps({
   movie: Object,
   totalStars: {
@@ -80,16 +81,18 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(["rated"]);
+// Reactive reference to store the selected rating
 const selectedRating = ref(props.movie.rating);
+//update rating from click on star
 const setRating = (star) => {
   selectedRating.value = star;
   emit("rated", props.movie.id, star);
 };
+// Watch for external rating changes and update selectedRating
 watch(
   () => props.movie.rating,
   (newRating) => {
     selectedRating.value = newRating;
   }
 );
-
 </script>
