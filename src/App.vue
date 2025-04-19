@@ -121,7 +121,7 @@ const newMovie = ref({
 });
 // It saves data from the JSON file when mounted
 onMounted(async () => {
-  const response = await axios.get("/movie.json"); 
+  const response = await axios.get("http://localhost:5173/Project/Task/movie.json"); 
   movies.value = response.data.items; 
 });
 // update rating for film
